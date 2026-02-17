@@ -1,0 +1,303 @@
+.about {
+  position: relative;
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.about .container {
+  position: relative;
+  z-index: 1;
+}
+
+.about__ornament {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about__ornament canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.about .section-label,
+.about__grid,
+.about__skills {
+  position: relative;
+  z-index: 1;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-16);
+  align-items: stretch;
+  margin-bottom: var(--space-16);
+}
+
+/* Visual Column */
+.about__image-col {
+  height: 100%;
+  display: flex;
+  min-height: 0;
+  padding: var(--space-4) 0;
+}
+
+.about__image-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  box-shadow: var(--shadow-lg);
+}
+
+.about__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+.about__image-wrap:hover .about__image {
+  transform: scale(1.03);
+}
+
+/* Content Column */
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-height: 0;
+  padding: var(--space-4) 0;
+}
+
+/* Glass bio card */
+.about__bio-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--glass-shadow);
+}
+
+.about__bio {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--space-4);
+}
+
+.about__bio:last-child {
+  margin-bottom: 0;
+}
+
+.about__bio em {
+  color: var(--color-accent);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.about__bio strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Education — glass card */
+.about__edu {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--glass-shadow);
+}
+
+.about__subtitle {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.about__edu-item {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.about__edu-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.about__edu-degree {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-1);
+}
+
+.about__edu-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.about__edu-year {
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+}
+
+/* Skills Marquee */
+.about__skills {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-6) 0;
+}
+
+.about__marquee {
+  position: relative;
+  overflow: hidden;
+  contain: layout paint;
+}
+
+.about__marquee::before,
+.about__marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 64px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.about__marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--color-bg), rgba(244, 241, 234, 0));
+}
+
+.about__marquee::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--color-bg), rgba(244, 241, 234, 0));
+}
+
+.about__marquee-track {
+  display: flex;
+  gap: var(--space-4);
+  width: max-content;
+  animation: marquee 40s linear infinite;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.about__skill-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent-secondary);
+  white-space: nowrap;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid rgba(var(--color-accent-secondary-rgb), 0.24);
+  border-radius: var(--radius-full);
+  background: rgba(var(--color-accent-secondary-rgb), 0.06);
+  transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.about__skill-tag:hover {
+  color: var(--color-accent-secondary);
+  border-color: rgba(var(--color-accent-secondary-rgb), 0.46);
+  background: var(--color-accent-secondary-glow);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about__ornament {
+    display: none;
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .about__image-col {
+    height: auto;
+    padding: 0;
+  }
+
+  .about__image-wrap {
+    aspect-ratio: 3/4;
+    height: auto;
+    min-height: unset;
+  }
+
+  .about__content {
+    gap: var(--space-4);
+    padding: 0;
+  }
+
+  .about__bio-card,
+  .about__edu {
+    padding: var(--space-6) var(--space-8);
+  }
+
+  .about__bio {
+    font-size: var(--text-base);
+    line-height: 1.7;
+  }
+
+  .about__subtitle {
+    margin-bottom: var(--space-3);
+  }
+
+  .about__skill-tag {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .about__marquee::before,
+  .about__marquee::after {
+    display: none;
+  }
+
+  .about__marquee-track {
+    gap: var(--space-2);
+    animation: marquee 46s linear infinite;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  .about__skills {
+    padding: var(--space-4) 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__marquee-track {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+}
