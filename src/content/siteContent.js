@@ -180,7 +180,7 @@ export const siteContent = {
         title: 'SQL Data Warehouse (Medallion Architecture)',
         desc: 'Built an end-to-end SQL data warehouse using the Bronze/Silver/Gold pattern to ingest ERP + CRM CSV data, standardize schemas, apply cleansing/transformations, and publish analytics-ready fact/dimension tables.',
         stack: ['PostgreSQL', 'SQL', 'Python', 'Shell Scripting'],
-        link: null,
+        link: 'https://github.com/ASR373/sql-datawarehouse',
       },
       {
         id: '02',
@@ -201,7 +201,7 @@ export const siteContent = {
         title: 'Data Vault (Data Bank) — Nodes & Transactions',
         desc: 'Generated management insights on customer growth, movement across regions/nodes, and transaction behavior trends using joined operational tables and SQL exploration.',
         stack: ['SQL'],
-        link: null,
+        link: 'https://narrow-taxi-1de.notion.site/Data-Vault-227e7042865d4b4a9525b8899f63b695',
       },
     ],
   },
