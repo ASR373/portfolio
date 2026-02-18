@@ -27,8 +27,10 @@ npm run preview
 This repo is set up for static hosting (SPA).
 
 ### Render (Static Site)
-- Build Command: `npm install && npm run build`
+- Build Command: `npm ci && npm run build`
 - Publish Directory: `dist`
+
+If you see an error like `Publish directory dict does not exist!`, it means the Publish Directory was set incorrectly in Render. It must be `dist` (not `dict`).
 
 ### Netlify
 - Build Command: `npm run build`
