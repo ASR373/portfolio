@@ -19,7 +19,8 @@ export const siteContent = {
     about: { number: '01', title: 'About' },
     experience: { number: '02', title: 'Experience' },
     projects: { number: '03', title: 'Projects' },
-    contact: { number: '04', title: 'Contact' },
+    certifications: { number: '04', title: 'Certifications' },
+    contact: { number: '05', title: 'Contact' },
   },
 
   navbar: {
@@ -34,6 +35,7 @@ export const siteContent = {
       { label: 'About', id: 'about' },
       { label: 'Experience', id: 'experience' },
       { label: 'Projects', id: 'projects' },
+      { label: 'Certifications', id: 'certifications' },
       { label: 'Contact', id: 'contact' },
     ],
   },
@@ -166,6 +168,23 @@ export const siteContent = {
         desc: 'Streamlit app for early prediction of five diseases using supervised ML and ensemble models.',
         stack: ['Streamlit', 'Python', 'Boosting Ensembles', 'SAS', 'PCA', 'Normalization', 'One-Hot Encoding'],
         link: 'https://health-gaurd.onrender.com/',
+      },
+    ],
+  },
+
+  certifications: {
+    items: [
+      {
+        id: '01',
+        title: 'AWS Certified AI Practitioner',
+        issuer: 'Amazon Web Services (AWS)',
+        link: 'https://www.credly.com/badges/6c5a020c-a2bb-4f19-ae8e-a46dd505e5bd/public_url',
+      },
+      {
+        id: '02',
+        title: 'AWS Certified Cloud Practitioner',
+        issuer: 'Amazon Web Services (AWS)',
+        link: 'https://www.credly.com/badges/fe2bc215-79db-4dde-8758-82a2946c06b5/public_url',
       },
     ],
   },
