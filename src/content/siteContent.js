@@ -140,7 +140,11 @@ export const siteContent = {
   },
 
   projects: {
-    items: [
+    groupLabels: {
+      mlDe: 'ML/Data Engineering Projects',
+      analyst: 'Data Analyst Projects',
+    },
+    mlDeItems: [
       {
         id: '01',
         title: 'Banking Data Pipeline with CDC & Cloud Warehousing',
@@ -170,6 +174,36 @@ export const siteContent = {
         link: 'https://health-gaurd.onrender.com/',
       },
     ],
+    analystItems: [
+      {
+        id: '01',
+        title: 'SQL Data Warehouse (Medallion Architecture)',
+        desc: 'Built an end-to-end SQL data warehouse using the Bronze/Silver/Gold pattern to ingest ERP + CRM CSV data, standardize schemas, apply cleansing/transformations, and publish analytics-ready fact/dimension tables.',
+        stack: ['PostgreSQL', 'SQL', 'Python', 'Shell Scripting'],
+        link: null,
+      },
+      {
+        id: '02',
+        title: 'Credit Card Usage Analysis',
+        desc: 'Analyzed 4,000 customers across 5 cities and built a 2-page interactive Power BI dashboard (DAX measures) to drive product + marketing recommendations for a new card launch.',
+        stack: ['Excel', 'Power BI', 'DAX'],
+        link: 'https://github.com/ASR373/Credit-Card-Usage-Analysis',
+      },
+      {
+        id: '03',
+        title: 'Coffee Brand Analysis',
+        desc: 'Interactive Power BI report analyzing coffee brand reviews across quality, pricing, roast type, and origin; surfaced top brands using measures like Average Rating and Quality-to-Price Ratio (QPR).',
+        stack: ['Power BI', 'Excel', 'DAX'],
+        link: 'https://github.com/ASR373/Coffee-Brand-Analysis',
+      },
+      {
+        id: '04',
+        title: 'Data Vault (Data Bank) — Nodes & Transactions',
+        desc: 'Generated management insights on customer growth, movement across regions/nodes, and transaction behavior trends using joined operational tables and SQL exploration.',
+        stack: ['SQL'],
+        link: null,
+      },
+    ],
   },
 
   certifications: {
@@ -185,6 +219,18 @@ export const siteContent = {
         title: 'AWS Certified Cloud Practitioner',
         issuer: 'Amazon Web Services (AWS)',
         link: 'https://www.credly.com/badges/fe2bc215-79db-4dde-8758-82a2946c06b5/public_url',
+      },
+      {
+        id: '03',
+        title: 'More Coming Soon',
+        issuer: 'Add your next certification',
+        link: null,
+      },
+      {
+        id: '04',
+        title: 'More Coming Soon',
+        issuer: 'Add your next certification',
+        link: null,
       },
     ],
   },

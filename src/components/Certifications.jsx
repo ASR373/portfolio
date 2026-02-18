@@ -5,14 +5,15 @@ import { SectionAccent3D } from './SectionAccent3D'
 import './Certifications.css'
 
 function CertificationCard({ cert, index }) {
+  const isLink = Boolean(cert.link) && typeof cert.link === 'string'
+  const Card = isLink ? 'a' : 'div'
+  const cardProps = isLink
+    ? { href: cert.link, target: '_blank', rel: 'noopener noreferrer' }
+    : { role: 'article', 'aria-disabled': 'true' }
+
   return (
     <FadeIn delay={0.1 + index * 0.12}>
-      <a
-        href={cert.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="cert__card"
-      >
+      <Card className={`cert__card ${!isLink ? 'cert__card--disabled' : ''}`} {...cardProps}>
         <span className="cert__bg-num">{cert.id}</span>
 
         <div className="cert__card-header">
@@ -33,8 +34,8 @@ function CertificationCard({ cert, index }) {
         <h3 className="cert__title">{cert.title}</h3>
         <p className="cert__issuer">{cert.issuer}</p>
 
-        <span className="cert__cta">View credential</span>
-      </a>
+        <span className="cert__cta">{isLink ? 'View credential' : 'Add credential'}</span>
+      </Card>
     </FadeIn>
   )
 }
@@ -66,4 +67,3 @@ export function Certifications() {
     </section>
   )
 }
-

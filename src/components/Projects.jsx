@@ -8,7 +8,10 @@ function ProjectCard({ project, index }) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const cardRef = useRef(null)
 
+  const isLink = Boolean(project.link) && typeof project.link === 'string'
+
   const handleMouseMove = (e) => {
+    if (!isLink) return
     if (!cardRef.current) return
     const rect = cardRef.current.getBoundingClientRect()
     const x = (e.clientX - rect.left) / rect.width - 0.5
@@ -17,22 +20,33 @@ function ProjectCard({ project, index }) {
   }
 
   const handleMouseLeave = () => {
+    if (!isLink) return
     setTilt({ x: 0, y: 0 })
   }
 
+  const className = `proj__card ${!isLink ? 'proj__card--disabled' : ''}`
+  const style = isLink
+    ? { transform: `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }
+    : undefined
+
+  const Card = isLink ? 'a' : 'div'
+  const cardProps = isLink
+    ? {
+        href: project.link,
+        target: project.link.startsWith('http') ? '_blank' : '_self',
+        rel: 'noopener noreferrer',
+      }
+    : { role: 'article', 'aria-disabled': 'true' }
+
   return (
     <FadeIn delay={0.1 + index * 0.12}>
-      <a
-        href={project.link}
-        target={project.link.startsWith('http') ? '_blank' : '_self'}
-        rel="noopener noreferrer"
-        className="proj__card"
+      <Card
+        {...cardProps}
+        className={className}
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        style={{
-          transform: `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-        }}
+        style={style}
       >
         {/* Background number */}
         <span className="proj__bg-num">{project.id}</span>
@@ -54,7 +68,7 @@ function ProjectCard({ project, index }) {
             <span key={i} className="proj__tag">{tech}</span>
           ))}
         </div>
-      </a>
+      </Card>
     </FadeIn>
   )
 }
@@ -77,13 +91,21 @@ export function Projects() {
           </div>
         </FadeIn>
 
+        <FadeIn delay={0.08}>
+          <h3 className="proj__group-title">{projects.groupLabels?.mlDe || 'Projects'}</h3>
+        </FadeIn>
         <div className="proj__grid">
-          {projects.items.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-            />
+          {projects.mlDeItems.map((project, index) => (
+            <ProjectCard key={`mlde-${project.id}`} project={project} index={index} />
+          ))}
+        </div>
+
+        <FadeIn delay={0.12}>
+          <h3 className="proj__group-title proj__group-title--spaced">{projects.groupLabels?.analyst || 'Projects'}</h3>
+        </FadeIn>
+        <div className="proj__grid">
+          {projects.analystItems.map((project, index) => (
+            <ProjectCard key={`analyst-${project.id}`} project={project} index={index} />
           ))}
         </div>
       </div>

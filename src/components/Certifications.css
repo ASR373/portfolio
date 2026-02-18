@@ -58,6 +58,24 @@
   transform: translateY(-2px);
 }
 
+.cert__card--disabled {
+  cursor: default;
+}
+
+.cert__card--disabled:hover {
+  border-color: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transform: none;
+}
+
+.cert__card--disabled .cert__arrow {
+  opacity: 0.5;
+}
+
+.cert__card--disabled .cert__cta {
+  opacity: 0.85;
+}
+
 .cert__bg-num {
   position: absolute;
   top: -20px;
@@ -173,4 +191,3 @@
     font-size: 5rem;
   }
 }
-

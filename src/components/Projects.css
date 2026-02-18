@@ -34,6 +34,19 @@
   gap: var(--space-6);
 }
 
+.proj__group-title {
+  margin: 0 0 var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.proj__group-title--spaced {
+  margin-top: var(--space-16);
+}
+
 /* Glass Card */
 .proj__card {
   position: relative;
@@ -52,6 +65,28 @@
   will-change: transform;
   cursor: pointer;
   box-shadow: var(--glass-shadow);
+}
+
+.proj__card--disabled {
+  cursor: default;
+}
+
+.proj__card--disabled:hover {
+  border-color: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transform: none;
+}
+
+.proj__card--disabled .proj__arrow {
+  opacity: 0.5;
+}
+
+.proj__card--disabled .proj__title {
+  color: var(--color-text);
+}
+
+.proj__card--disabled .proj__tag {
+  opacity: 0.85;
 }
 
 .proj__card:hover {
@@ -174,6 +209,10 @@
   .proj__grid {
     grid-template-columns: 1fr;
     gap: var(--space-4);
+  }
+
+  .proj__group-title--spaced {
+    margin-top: var(--space-12);
   }
 
   .proj__card {
