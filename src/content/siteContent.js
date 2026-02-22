@@ -1,4 +1,8 @@
 import resumePdf from '../assets/resume.pdf'
+import blog1Img from '../assets/b1.png'
+import blog2Img from '../assets/b2.png'
+import blog3Img from '../assets/b3.png'
+import blog4Img from '../assets/b4.png'
 
 export const siteContent = {
   profile: {
@@ -20,7 +24,8 @@ export const siteContent = {
     experience: { number: '02', title: 'Experience' },
     projects: { number: '03', title: 'Projects' },
     certifications: { number: '04', title: 'Certifications' },
-    contact: { number: '05', title: 'Contact' },
+    blogs: { number: '05', title: 'Blogs' },
+    contact: { number: '06', title: 'Contact' },
   },
 
   navbar: {
@@ -36,6 +41,7 @@ export const siteContent = {
       { label: 'Experience', id: 'experience' },
       { label: 'Projects', id: 'projects' },
       { label: 'Certifications', id: 'certifications' },
+      { label: 'Blogs', href: 'https://adithsreeram.medium.com/', external: true },
       { label: 'Contact', id: 'contact' },
     ],
   },
@@ -231,6 +237,35 @@ export const siteContent = {
         title: 'Azure Fundamentals',
         issuer: 'Microsoft',
         link: 'https://learn.microsoft.com/api/credentials/share/en-us/adithsreeram/2D60D825958832A6?sharingId=2A5545A4A0ABF62D',
+      },
+    ],
+  },
+
+  blogs: {
+    items: [
+      {
+        id: '01',
+        title: 'Deploying ML Models on Cloud is Simple!!',
+        link: 'https://medium.com/p/d8deae3fc28e',
+        image: blog3Img,
+      },
+      {
+        id: '02',
+        title: 'The two most important and useful Concepts in Statistics explained.',
+        link: 'https://adithsreeram.medium.com/the-two-most-important-and-useful-concepts-in-statistics-explained-7f64e9108bdf',
+        image: blog1Img,
+      },
+      {
+        id: '03',
+        title: 'One KPI = One Chart: The Golden Rule of Dashboard Design',
+        link: 'https://adithsreeram.medium.com/one-kpi-one-chart-the-golden-rule-of-dashboard-design-e4694f38af77',
+        image: blog2Img,
+      },
+      {
+        id: '04',
+        title: 'Inference in machine learning is where models meet the real world.',
+        link: 'https://medium.com/p/d133186939e0',
+        image: blog4Img,
       },
     ],
   },

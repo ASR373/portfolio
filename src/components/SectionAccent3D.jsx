@@ -7,6 +7,7 @@ const VARIANT_STYLE = {
   experience: { primary: '#45567F', secondary: '#C4A15B' },
   projects: { primary: '#3F4F75', secondary: '#C4A15B' },
   certifications: { primary: '#4B5D8A', secondary: '#C4A15B' },
+  blogs: { primary: '#4B5D8A', secondary: '#C4A15B' },
   contact: { primary: '#475985', secondary: '#C4A15B' },
 }
 

@@ -31,6 +31,8 @@ export function Navbar() {
   const resumeHref = profile.links.resume
   const resumeTitle = navbar.resumeTitle || navbar.resumeButtonLabel || 'Resume'
 
+  const isExternalLink = (link) => Boolean(link?.external) || Boolean(link?.href && /^https?:\/\//.test(link.href))
+
   const openResume = () => {
     if (!resumeHref) return
     setIsMobileOpen(false)
@@ -54,17 +56,34 @@ export function Navbar() {
 
         {/* Desktop Links */}
         <div className="navbar__links">
-          {navLinks.map((link, i) => (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              className="navbar__link"
-              onClick={(e) => scrollToSection(e, link.id)}
-            >
-              <span className="navbar__link-num">0{i + 1}</span>
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link, i) => {
+            if (link.href) {
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="navbar__link"
+                  target={isExternalLink(link) ? '_blank' : undefined}
+                  rel={isExternalLink(link) ? 'noopener noreferrer' : undefined}
+                >
+                  <span className="navbar__link-num">0{i + 1}</span>
+                  {link.label}
+                </a>
+              )
+            }
+
+            return (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className="navbar__link"
+                onClick={(e) => scrollToSection(e, link.id)}
+              >
+                <span className="navbar__link-num">0{i + 1}</span>
+                {link.label}
+              </a>
+            )
+          })}
           {resumeHref && (
             <button
               type="button"
@@ -99,20 +118,41 @@ export function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
-            {navLinks.map((link, i) => (
-              <motion.a
-                key={link.id}
-                href={`#${link.id}`}
-                className="navbar__mobile-link"
-                onClick={(e) => scrollToSection(e, link.id)}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <span className="navbar__link-num">0{i + 1}</span>
-                {link.label}
-              </motion.a>
-            ))}
+            {navLinks.map((link, i) => {
+              if (link.href) {
+                return (
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    className="navbar__mobile-link"
+                    target={isExternalLink(link) ? '_blank' : undefined}
+                    rel={isExternalLink(link) ? 'noopener noreferrer' : undefined}
+                    onClick={() => setIsMobileOpen(false)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <span className="navbar__link-num">0{i + 1}</span>
+                    {link.label}
+                  </motion.a>
+                )
+              }
+
+              return (
+                <motion.a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  className="navbar__mobile-link"
+                  onClick={(e) => scrollToSection(e, link.id)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <span className="navbar__link-num">0{i + 1}</span>
+                  {link.label}
+                </motion.a>
+              )
+            })}
             {resumeHref && (
               <motion.button
                 type="button"
