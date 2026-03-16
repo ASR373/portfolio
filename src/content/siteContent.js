@@ -41,7 +41,7 @@ export const siteContent = {
       { label: 'Experience', id: 'experience' },
       { label: 'Projects', id: 'projects' },
       { label: 'Certifications', id: 'certifications' },
-      { label: 'Blogs', href: 'https://adithsreeram.medium.com/', external: true },
+      { label: 'Blogs', id: 'blogs' },
       { label: 'Contact', id: 'contact' },
     ],
   },
@@ -216,24 +216,30 @@ export const siteContent = {
     items: [
       {
         id: '01',
+        title: 'AWS Certified Solutions Architect – Associate',
+        issuer: 'Amazon Web Services (AWS)',
+        link: 'https://www.credly.com/badges/ee667c1d-8505-4f1b-821e-66973736a836/public_url',
+      },
+      {
+        id: '02',
+        title: 'Microsoft Certified: Power BI Data Analyst Associate (PL-300)',
+        issuer: 'Microsoft',
+        link: 'https://learn.microsoft.com/api/credentials/share/en-us/adithsreeram/271230B5FBEE7A9?sharingId=2A5545A4A0ABF62D',
+      },
+      {
+        id: '03',
         title: 'AWS Certified AI Practitioner',
         issuer: 'Amazon Web Services (AWS)',
         link: 'https://www.credly.com/badges/6c5a020c-a2bb-4f19-ae8e-a46dd505e5bd/public_url',
       },
       {
-        id: '02',
+        id: '04',
         title: 'AWS Certified Cloud Practitioner',
         issuer: 'Amazon Web Services (AWS)',
         link: 'https://www.credly.com/badges/fe2bc215-79db-4dde-8758-82a2946c06b5/public_url',
       },
       {
-        id: '03',
-        title: 'AWS Machine Learning Engineer – Associate',
-        issuer: 'Amazon Web Services (AWS)',
-        link: null,
-      },
-      {
-        id: '04',
+        id: '05',
         title: 'Azure Fundamentals',
         issuer: 'Microsoft',
         link: 'https://learn.microsoft.com/api/credentials/share/en-us/adithsreeram/2D60D825958832A6?sharingId=2A5545A4A0ABF62D',
