@@ -10,6 +10,9 @@ export function Navbar() {
   const [activeResume, setActiveResume] = useState(null)
   const { profile, navbar } = siteContent
 
+  const navLinks = navbar.links
+  const navSectionLinks = navLinks.filter((link) => link.id)
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
@@ -18,16 +21,27 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToSection = (e, id) => {
+  const getPathForId = (id) => (id === 'app' ? '/' : `/${id}`)
+
+  const findIdFromPath = (pathname) => {
+    const slug = pathname.replace(/^\/+/, '').split('/')[0]
+    if (!slug) return 'app'
+    const match = navSectionLinks.find((link) => link.id === slug)
+    return match ? match.id : null
+  }
+
+  const scrollToSection = (e, id, { updateUrl = true } = {}) => {
     e.preventDefault()
     setIsMobileOpen(false)
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+      if (updateUrl) {
+        window.history.pushState(null, '', getPathForId(id))
+      }
     }
   }
 
-  const navLinks = navbar.links
   const resumeHref = profile.links.resume
   const resumeTitle = navbar.resumeTitle || navbar.resumeButtonLabel || 'Resume'
 
@@ -41,6 +55,25 @@ export function Navbar() {
       url: resumeHref,
     })
   }
+
+  useEffect(() => {
+    const handleRouteScroll = () => {
+      const targetId = findIdFromPath(window.location.pathname)
+      if (!targetId) return
+      const element = document.getElementById(targetId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+
+    const initialTimer = window.setTimeout(handleRouteScroll, 0)
+    window.addEventListener('popstate', handleRouteScroll)
+
+    return () => {
+      window.clearTimeout(initialTimer)
+      window.removeEventListener('popstate', handleRouteScroll)
+    }
+  }, [navSectionLinks])
 
   return (
     <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
